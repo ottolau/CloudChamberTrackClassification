@@ -29,8 +29,9 @@ while(True):
     # Cut ROI and preprocess
     roi = frame[TOP+2:BOTTOM-2, LEFT+2:RIGHT-2]
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    #_, gray = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV) # need fixes
-    gray = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2)
+    _, gray = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV) # need fixes
+    #_, gray = cv2.threshold(gray, 127, 255, cv2.THRESH_TRUNC) # need fixes
+    #gray = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2)
     #cv2.imshow("ROI", gray)
 
     # Predict and show prediction

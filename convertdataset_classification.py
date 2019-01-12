@@ -11,13 +11,10 @@ def get_imagevertex(xcen, ycen, roi_size):
     ymax = ycen + roi_size/2
     return (xmin, ymin, xmax, ymax)
 
-def main():
-    csv_file = 
+def main(csv_file, roi_size):
     class_map = {"alpha": 0, "beta": 1, "muon": 2}
     class_folder = ["", "", ""]
     class_counter = [0, 0, 0]
-
-    roi_size = 256
 
     csv_input = np.genfromtxt(csv_file, delimiter=',', unpack=True)
 
@@ -32,12 +29,14 @@ def main():
         if sub_xmax > xmax: continue
         if sub_ymax > ymax: continue
 
-        # (left, upper, right, lower)
-        sub_im = im.crop((sub_xmin, sub_ymax, sub_xmax, sub_ymin))
+        # (left, upper, right, lower), upper left is (0, 0)
+        sub_im = im.crop((sub_xmin, sub_ymin, sub_xmax, sub_ymax))
         sub_im.save("%s/class%s_%05d.png"%(class_folder[class_map[class_name]], str(class_map[class_name]), class_counter[class_map[class_name]])
         class_counter[class_map[class_name]] = class_counter[class_map[class_name]] + 1
 
 
 if __name__ == "__main__":
-    main()
+    csv_file = ''
+    roi_size = 256
+    main(csv_file, roi_size)
 
