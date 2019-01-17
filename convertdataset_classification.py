@@ -21,14 +21,14 @@ def main(csv_file, roi_size, csv_outputname):
     csv_output = open(csv_outputname, 'w')
     for im_name, xmin, ymin, xmax, ymax, class_name in csv_input:
         im = Image.open(im_name)
-        xmax, ymax = im.size
+        width, height = im.size
         xcen, ycen = get_imagecenter(xmin, ymin, xmax, ymax)
         sub_xmin, sub_ymin, sub_xmax, sub_ymax = get_imagevertex(xcen, ycen, roi_size)
         # check if the sub-image outside the margin
         if sub_xmin < 0: continue
         if sub_ymin < 0: continue
-        if sub_xmax > xmax: continue
-        if sub_ymax > ymax: continue
+        if sub_xmax > width: continue
+        if sub_ymax > height: continue
 
         # (left, upper, right, lower), upper left is (0, 0)
         sub_im = im.crop((sub_xmin, sub_ymin, sub_xmax, sub_ymax))
