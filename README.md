@@ -10,7 +10,7 @@ This project is implemented in Keras with TensorFlow as the backend. The code re
 
 ### Preprocessing
 
-The training dataset is prepared with the cloud chamber in the Chinese University of Hong Kong. In order to get a better training result, the training video is pre-processed as desceribed in followings:
+The training dataset is prepared with the cloud chamber in the Chinese University of Hong Kong. In order to get a better training result, the training video is pre-processed with the following algorithm:
 
 * [BackgroundSubtraction](https://github.com/mwkwok/videoBKGSubtractAndFrameOutput) - The algorithm developed by Raymond Kwok to subtract the background of the video.
 
@@ -24,10 +24,10 @@ The CSV file with annotations should contain one annotation per line. Images wit
 path/to/image.jpg,x1,y1,x2,y2,class_name
 ```
 
-The annotation file can be prepared by [labelImg](https://github.com/tzutalin/labelImg). For converting the annotation file to the images and the `mapping.csv` used in this project, run:
+The annotation file can be prepared by [labelImg](https://github.com/tzutalin/labelImg). For converting the annotation file to the images and the `mapping.csv` used in this project, put the data under folder `Data` and run:
 
 ```
-python convertdataset_classification.py
+python labelImgXML2CSV.py -i [folderDir]
 ```
 
 The `mapping.csv` contains the path to the image and the class of it.
