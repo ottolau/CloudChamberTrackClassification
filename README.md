@@ -37,3 +37,13 @@ The `mapping.csv` contains the path to the image and the class of it.
 The training is done based on transfer training with the base model VGG16. The expected image format is PNG. The notebook of the training process is in `keras/cloudchamberAI_v1_train.ipynb`
 
 
+### Testing: demo
+
+A demo implementation of this classifier is included. You can select the region of interest of an image with the cursor. Put an image you want to classify into folder `demo_examples` and run:
+
+```
+python ccAI_v1_demo.py -i demo_examples/[Image name]
+```
+
+You can crop the region of interest by pressing `c`, the classified class will be shown on the screen. To exit, press `q` in any time.
+
