@@ -39,6 +39,7 @@ for root, dirs, files in os.walk(foldersDir):
 
 #gen summarys for respectively all particles, and each of the particles
 with open(os.path.join(foldersDir, 'mapping_all.csv'), 'w') as f:
+    f.write('Id,Target\n')
     for class_num, im_names in class_paths.items():
         with open(os.path.join(foldersDir, 'mapping_%s.csv'%class_mapRev[class_num]), 'w') as g:
             for im_name in im_names:
